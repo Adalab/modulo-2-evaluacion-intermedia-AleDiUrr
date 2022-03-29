@@ -19,9 +19,12 @@ function generatorComparatorNum() {
     const selectNum = selectNumber;
 
 if (getNumber === selectNum) {
+    const number = inputBet.value * 2;
 winLose.innerHTML = `Has ganado el doble de lo apostado :)`;
+money.innetHTML = number
 
 } else { winLose.innerHTML = `Has perdido lo apostado :(`;
+money.innerHTML = 0;
 
 }
 }
@@ -29,6 +32,8 @@ winLose.innerHTML = `Has ganado el doble de lo apostado :)`;
 
 function moneyBet() {
     const chosenMoney = inputBet.value;
+    money.innerHTML = chosenMoney;
+
     
 }
 
@@ -37,9 +42,10 @@ function handleClicKButton (event) {
 
     getRandomNumber(6);
     generatorComparatorNum ();
-    moneyBet();
     
 }
 
 
 button.addEventListener('click' , handleClicKButton );
+inputBet.addEventListener('keyup', moneyBet);
+
