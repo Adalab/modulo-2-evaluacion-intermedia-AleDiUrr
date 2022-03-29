@@ -8,8 +8,6 @@ const inputBet = document.querySelector('.js-input');
 
 
 
-
-
 function getRandomNumber(max) {
     return Math.ceil(Math.random() * max);
     }
@@ -18,10 +16,10 @@ function generatorComparatorNum() {
     const getNumber = getRandomNumber(6);
     const selectNum = selectNumber;
 
-if (getNumber === selectNum) {
-    const number = inputBet.value * 2;
+if (getNumber === parseInt(selectNum.value)) {
+
 winLose.innerHTML = `Has ganado el doble de lo apostado :)`;
-money.innetHTML = number
+money.innetHTML = inputBet.value * 2;
 
 } else { winLose.innerHTML = `Has perdido lo apostado :(`;
 money.innerHTML = 0;
