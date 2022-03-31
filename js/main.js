@@ -1,6 +1,6 @@
 'use strict';
 
-const button = document.querySelector('.js-button');
+/*const button = document.querySelector('.js-button');
 const selectNumber = document.querySelector('.js-select');
 const winLose = document.querySelector('.js-title');
 const money = document.querySelector('.js-money');
@@ -45,5 +45,37 @@ function handleClicKButton (event) {
 
 
 button.addEventListener('click' , handleClicKButton );
-inputBet.addEventListener('keyup', moneyBet);
+inputBet.addEventListener('keyup', moneyBet);*/
 
+const button = document.querySelector('.js-button');
+const selectNumber = document.querySelector('.js-select');
+const winLose = document.querySelector('.js-title');
+const money = document.querySelector('.js-money');
+const inputBet = document.querySelector('.js-input');
+let betBalance = 50;
+function getRandomNumber(max) {
+  return Math.ceil(Math.random() * max);
+}
+
+function moneyBet(selectMoney, numberRandom) {
+  const moneyGot = parseInt(inputBet.value);
+
+  if (selectMoney === numberRandom) {
+    winLose.innerHTML = 'Has ganado el doble de lo apostado :)';
+    betBalance = moneyGot * 2 + betBalance;
+  } else {
+    winLose.innerHTML = 'Has perdido lo apostado :(';
+    betBalance = betBalance - moneyGot;
+    console.log(betBalance);
+  }
+  money.innerHTML = `Saldo: ${betBalance}`;
+}
+
+function handleClickButton(event) {
+  event.preventDefault();
+  const selectMoney = parseInt(selectNumber.value);
+  const numberRandom = getRandomNumber(6);
+  moneyBet(selectMoney, numberRandom);
+}
+
+button.addEventListener('click', handleClickButton);
